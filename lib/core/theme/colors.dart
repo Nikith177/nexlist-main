@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   // Brand Colors (Update these hex codes to precisely match the web frontend)
   static const Color primary = Color(0xFF0066FF); // Classic Nexlist Blue
-  static const Color secondary = Color(0xFF00C853); // Accent Green (for success/actions)
+  static const Color secondary = Color(0xFF22C55E); // Accent Green (for success/actions)
   static const Color accent = Color(0xFFFF9100); // Orange for urgent items
 
   // Semantic Colors
@@ -13,7 +13,7 @@ class AppColors {
   static const Color info = Color(0xFF1976D2);
 
   // Neutral Colors (Light Theme)
-  static const Color background = Color(0xFFF8F9FA); // Very light grey
+  static const Color background = Color(0xFFF9FAFB); // Very light grey
   static const Color surface = Colors.white;
   
   // Text Colors
