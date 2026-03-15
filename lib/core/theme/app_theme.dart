@@ -96,7 +96,7 @@ class AppTheme {
           borderSide: const BorderSide(color: AppColors.error),
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: AppColors.surface,
         elevation: 2,
         shadowColor: Colors.black.withValues(alpha: 0.05),
