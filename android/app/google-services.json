@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "175894143264",
+    "project_id": "nexlist-main",
+    "storage_bucket": "nexlist-main.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175894143264:android:f13806c9922b214a293745",
+        "android_client_info": {
+          "package_name": "in.nexlist.nexlist_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgvROfDvxWthVjdBtEQniiaP5PbNi5BEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
