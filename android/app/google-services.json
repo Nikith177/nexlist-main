@@ -12,7 +12,20 @@
           "package_name": "in.nexlist.nexlist_mobile"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "175894143264-uitan2ki0tf39cormqap0516m5in3n4n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.nexlist.nexlist_mobile",
+            "certificate_hash": "3fe1527ef9ac5c0c7e5e2d090ec28929fd13f73b"
+          }
+        },
+        {
+          "client_id": "175894143264-bos1jjs1ppsq3vpp0kp2d2b8gjmgktvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDgvROfDvxWthVjdBtEQniiaP5PbNi5BEQ"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175894143264-bos1jjs1ppsq3vpp0kp2d2b8gjmgktvi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "175894143264-1jfl7cv3ojtr91vfa8vn0g01m4g45ich.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "in.nexlist.nexlistMobile"
+              }
+            }
+          ]
         }
       }
     }

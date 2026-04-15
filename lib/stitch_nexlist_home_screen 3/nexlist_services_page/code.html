@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#197fe6",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Nexlist - Services</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 flex justify-center">
+<div class="w-[390px] min-h-screen bg-white dark:bg-slate-950 shadow-2xl relative flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-20 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md px-4 pt-4 pb-2 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Services</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">tune</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="relative mb-3">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl py-3 pl-11 pr-4 focus:ring-2 focus:ring-primary/50 text-sm placeholder:text-slate-400" placeholder="Search services" type="text"/>
+</div>
+<!-- Filter & Sort Row -->
+<div class="flex gap-2 mb-2">
+<button class="flex items-center gap-1.5 px-4 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
+<span>Filters</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
+<span>Sort: Newest</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+</div>
+</header>
+<!-- Main Scrollable Content -->
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Category Chips -->
+<div class="flex overflow-x-auto px-4 py-4 gap-2 no-scrollbar">
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-primary text-white text-xs font-semibold shadow-md shadow-primary/20">All Services</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium">Tutoring</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium">Repairs</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium">Assignments</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium">Design</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium">Photography</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium">Moving Help</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium">Tech Support</button>
+</div>
+<!-- Service Grid -->
+<div class="grid grid-cols-2 gap-4 px-4">
+<!-- Service Card 1 -->
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="relative aspect-square">
+<img class="w-full h-full object-cover" data-alt="Tutor helping a student with math" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6WJH12A7e_8AVYpSosW4A4bAg4nwdEru-NKKaOnI18qfjhKz1f4_MITrx4X0tjiTFxEESTsnSsGJKTey3L_yP9rpsRUYll6haZO12EV9z76ZBDe80jrM1iIe2ZHCAF_rmvrYIZwpuU87HkAPwkhfJhAZznLcVssk-TnRJ1Hzu_EaeXrt_NlUbX9519zkXEZp-AgmCy_XhUU-RqVvgbVlzTFjaW5bfAClYs9qg7L3iJ7DAu4_7hbySX9G5lmXiHGLm33z6Io9Ljg"/>
+<div class="absolute top-2 left-2 px-2 py-0.5 bg-primary/90 text-white text-[10px] font-bold rounded uppercase tracking-wider">Service</div>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-slate-600 text-lg">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="font-bold text-sm text-slate-900 dark:text-slate-100 truncate">Math Tutoring</h3>
+<p class="text-primary font-bold text-base mt-0.5">₹200<span class="text-[10px] font-normal text-slate-500">/hour</span></p>
+<div class="flex items-center gap-1 mt-2 text-slate-500 dark:text-slate-400 text-[10px]">
+<span class="material-symbols-outlined text-[12px]">location_on</span>
+<span class="truncate">Hostel H7 • 3h ago</span>
+</div>
+</div>
+</div>
+<!-- Service Card 2 -->
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="relative aspect-square">
+<img class="w-full h-full object-cover" data-alt="Person repairing a broken laptop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9fPZBuwvcHqhnBXqBPMI-Z-fLwjN-8JJDfdPOIQAenL2m7itGK6PpYeZK67rjcGszx9TpndO3f66ZNzLPIZtmKaCI_GcmVP9Ls36L6tomb1oAoq3tNMxLDbKwhjT3URCZEsll1jo8c9c-TbCQ1BjHwCaj1hNxpNPEig4ecMJc1AoBcniGU1SRkFiUUVu4iJ0XCwthF5ChOXhrOOCAGD4nEzZ8aUOCSzw-b5RwDR8FLAuHqQMPJiTCZH_aYiislG2Rutv5kRkNRg"/>
+<div class="absolute top-2 left-2 px-2 py-0.5 bg-primary/90 text-white text-[10px] font-bold rounded uppercase tracking-wider">Service</div>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-slate-600 text-lg">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="font-bold text-sm text-slate-900 dark:text-slate-100 truncate">Laptop Repair</h3>
+<p class="text-primary font-bold text-base mt-0.5">₹150</p>
+<div class="flex items-center gap-1 mt-2 text-slate-500 dark:text-slate-400 text-[10px]">
+<span class="material-symbols-outlined text-[12px]">location_on</span>
+<span class="truncate">Campus Market • 1h ago</span>
+</div>
+</div>
+</div>
+<!-- Service Card 3 -->
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="relative aspect-square">
+<img class="w-full h-full object-cover" data-alt="Modern graphic design workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSMFxYD4wsu3HGge_YDkAV0w_vhc68h6nPIy4EH6MemZBdUcxWiwuTXW3UiZ9duh9bypEY-Yjh-QsmfUKjH-KTpQZ1NjFzxC_FNFaYYyCsUndgzT_fnfkhHP2nOp4_RiANk3_-DtB0zXk9OrEnnO9a5ZiNdSTtMZnLIqL8X1R2WiBeULSBsuxB-aGQzwh_m2k8qjCkcUFyOk1bi8Eamy7_P5vyudc6pbxfxFW3bJWCDEHB1i7zPcEx7JiJWJyN-27PfeIEORPcIQ"/>
+<div class="absolute top-2 left-2 px-2 py-0.5 bg-primary/90 text-white text-[10px] font-bold rounded uppercase tracking-wider">Service</div>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-slate-600 text-lg">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="font-bold text-sm text-slate-900 dark:text-slate-100 truncate">Graphic Design</h3>
+<p class="text-primary font-bold text-base mt-0.5">₹300<span class="text-[10px] font-normal text-slate-500">/project</span></p>
+<div class="flex items-center gap-1 mt-2 text-slate-500 dark:text-slate-400 text-[10px]">
+<span class="material-symbols-outlined text-[12px]">location_on</span>
+<span class="truncate">Hostel H4 • 5h ago</span>
+</div>
+</div>
+</div>
+<!-- Service Card 4 -->
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="relative aspect-square">
+<img class="w-full h-full object-cover" data-alt="Professional camera on tripod outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7DVneNUGtCpDd4NcyKKx-kuLSHlk3Ssh2s_E2CR0wbS_wmGe-H3rg0Tb0w_m_byaEDjb9-8TzdjkWvl5QzO0ekm6PELjqz6NT_mG_rSgvCC-rHk3qsUwfE14KwMDfEQYHoLDPwK5Hq1TGSNtq_6ghsetzJHKm6SXyYLssfq2dh-BGuYd1vlsP_8dofflyWCPwORRPvc0qrdxWtt_m6KnurdR5578GqEbmxoQwfTCt62r3dqAMyEyXv52FarADW2ah3u5BUOGbKQ"/>
+<div class="absolute top-2 left-2 px-2 py-0.5 bg-primary/90 text-white text-[10px] font-bold rounded uppercase tracking-wider">Service</div>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-slate-600 text-lg">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="font-bold text-sm text-slate-900 dark:text-slate-100 truncate">Photography</h3>
+<p class="text-primary font-bold text-base mt-0.5">₹500<span class="text-[10px] font-normal text-slate-500">/session</span></p>
+<div class="flex items-center gap-1 mt-2 text-slate-500 dark:text-slate-400 text-[10px]">
+<span class="material-symbols-outlined text-[12px]">location_on</span>
+<span class="truncate">Main Lawn • 2h ago</span>
+</div>
+</div>
+</div>
+<!-- Service Card 5 (Extra for scroll feel) -->
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm opacity-60">
+<div class="relative aspect-square">
+<img class="w-full h-full object-cover" data-alt="Person carrying moving boxes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3RCSA7fYDOEpdQ409ucwxoCRNmVTo8zZcoQ2_aHRI1qENP0cqoztdhjJP6ZvVy3XEZoFwJNKX2DxAGm0h6FSuTcWfJ439nyelU9MfrFd4TqV914lt3wSo8vHjOgtBGPch-eZ6WlZtUqtQGvYiJ9inG7E_P5y5ppC1uTOdh-5TFVsee-6rQUAUOpHRc2_w2b0F5Sp4umS30USL5tLiGhZ0vSBnhbrGFEDLZYec7s6kNtt-vD9px7Qa06uBZhvouW-IsXgUDjfqSw"/>
+<div class="absolute top-2 left-2 px-2 py-0.5 bg-primary/90 text-white text-[10px] font-bold rounded uppercase tracking-wider">Service</div>
+</div>
+<div class="p-3">
+<h3 class="font-bold text-sm text-slate-900 dark:text-slate-100 truncate">Moving Help</h3>
+<p class="text-primary font-bold text-base mt-0.5">₹400</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="absolute bottom-0 left-0 right-0 bg-white/95 dark:bg-slate-950/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 px-4 pb-6 pt-2 z-30">
+<div class="flex justify-between items-center max-w-md mx-auto relative">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">sell</span>
+<span class="text-[10px] font-medium">Rentals</span>
+</a>
+<!-- Floating Post Button -->
+<div class="relative -top-6">
+<button class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-lg shadow-primary/40 ring-4 ring-white dark:ring-slate-950">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-medium text-slate-400">Post</span>
+</div>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">work</span>
+<span class="text-[10px] font-bold">Services</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</div>
+</nav>
+</div>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .fill-1 {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</body></html>

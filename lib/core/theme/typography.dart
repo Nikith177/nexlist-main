@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 class AppTypography {
-
   // Heading Styles
   static const TextStyle h1 = TextStyle(
     fontSize: 28,
@@ -24,7 +23,7 @@ class AppTypography {
     fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
   );
-  
+
   // Body Styles
   static const TextStyle bodyLarge = TextStyle(
     fontSize: 16,
@@ -49,7 +48,7 @@ class AppTypography {
     fontSize: 16,
     fontWeight: FontWeight.w600,
   );
-  
+
   // Label Style
   static const TextStyle label = TextStyle(
     fontSize: 12,

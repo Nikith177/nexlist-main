@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -58,6 +52,25 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyD0eHGiEfYgbRWJ6W2wzXJ4Zh-k3Vu6qjo',
+    appId: '1:175894143264:ios:a1ba89a0c9ae3f58293745',
+    messagingSenderId: '175894143264',
+    projectId: 'nexlist-main',
+    storageBucket: 'nexlist-main.firebasestorage.app',
+    iosBundleId: 'in.nexlist.nexlistMobile',
+  );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyD0uKwHayA6KSFUlxhQVeg0JTfpl5rlsZ8',
+    appId: '1:175894143264:web:942226ab74e63f8f293745',
+    messagingSenderId: '175894143264',
+    projectId: 'nexlist-main',
+    authDomain: 'nexlist-main.firebaseapp.com',
+    storageBucket: 'nexlist-main.firebasestorage.app',
+    measurementId: 'G-78K7YXP710',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyD0eHGiEfYgbRWJ6W2wzXJ4Zh-k3Vu6qjo',
     appId: '1:175894143264:ios:a1ba89a0c9ae3f58293745',
     messagingSenderId: '175894143264',

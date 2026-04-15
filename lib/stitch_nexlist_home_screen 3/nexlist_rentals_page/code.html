@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#197fe6",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "neutral-light": "#f0f2f4",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Work Sans', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="mx-auto max-w-md bg-white dark:bg-slate-900 min-h-screen flex flex-col relative shadow-xl">
+<header class="flex items-center justify-between px-4 py-3 bg-white dark:bg-slate-900 sticky top-0 z-10 border-b border-neutral-light/50 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100 cursor-pointer">arrow_back</span>
+<img alt="Nexlist Logo" class="h-6 w-auto" data-alt="Nexlist campus marketplace logo brand reference" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV_bYDfXxEHaDoveXnmlfF0-MR3FgY31O6gxOgpFUf_DbGaOnO5GT9ao6UEcwtf_R5sktWLDg7OPbFwRRHI3ODApIgWznJr79ijjXnIkc3Lmq_SnzH5MWHgS2csnySuiKK8GI3At90AQFiFC4t24cEF1bG4R9xI2zjQVQPi3h0eyjSUn9DfXpA-Yip8T5SK_5IEhvTn3YMH3B3GVVIWUuQhSS_wqTEFPMygMYuCAjZ2-C2AbJVy5etd72PWff7d3z2RmfGwcV1Vg"/>
+</div>
+<h1 class="text-lg font-bold text-slate-900 dark:text-slate-100">Rentals</h1>
+<button class="flex items-center justify-center p-1 rounded-full hover:bg-neutral-light dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">settings</span>
+</button>
+</header>
+<main class="flex-1 pb-24">
+<div class="px-4 py-3">
+<div class="relative flex items-center h-12 w-full bg-neutral-light dark:bg-slate-800 rounded-lg px-4 gap-2">
+<span class="material-symbols-outlined text-slate-400">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-base placeholder:text-slate-400 text-slate-900 dark:text-slate-100 p-0" placeholder="Search rental items" type="text"/>
+</div>
+</div>
+<div class="flex items-center justify-between px-4 py-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-900 border border-neutral-light dark:border-slate-800 rounded-full shadow-sm">
+<span class="text-sm font-medium">Filters</span>
+<span class="material-symbols-outlined text-sm">tune</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-900 border border-neutral-light dark:border-slate-800 rounded-full shadow-sm">
+<span class="text-sm font-medium">Sort: Newest</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<div class="flex gap-2 px-4 py-3 overflow-x-auto no-scrollbar">
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-primary/10 border border-primary/20 px-4">
+<p class="text-primary text-sm font-semibold">Cycles</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-neutral-light dark:bg-slate-800 px-4">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium">Electronics</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-neutral-light dark:bg-slate-800 px-4">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium">Furniture</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-neutral-light dark:bg-slate-800 px-4">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium">Coolers</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-neutral-light dark:bg-slate-800 px-4">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium">Calculators</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-neutral-light dark:bg-slate-800 px-4">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium">Hostel Essentials</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 px-4 mt-2">
+<div class="w-full bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-neutral-light dark:border-slate-800 overflow-hidden">
+<div class="relative aspect-square bg-slate-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Blue mountain bike for rent on campus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV110WpoXaFrSja9vurxhjsCWOOJMESPSOjFo6gV65uWebL8Pn5RVYJuVH5yU7VF60eYtETp2sRBPmUczTl7rD8X33Z5-kOEi7NrtojFrxnQQCHX_jtmKeLEGxJSfmAunEjYsFDKIXhxuinuWfFC3lx3AJQ68ulGsRIoRw0Jbnr3Em7ciSa2oD_Oj1ciyLZ2PDNcDIHPjGUGqGrvyBRSKWrLqGUK9RfS0Bevu4HIOH0XdLCT4XKJK3LqIk6YmmYoxA7xjeIRHZow"/>
+<div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">RENT</div>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur rounded-full">
+<span class="material-symbols-outlined text-sm text-slate-900">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-base font-semibold text-slate-900 dark:text-slate-100 line-clamp-1">Cycle for Rent</h3>
+<p class="text-lg font-bold text-primary mt-1">₹40<span class="text-xs font-normal">/day</span></p>
+<div class="flex items-center gap-1 text-slate-500 text-[11px] mt-2">
+<span class="material-symbols-outlined text-xs">location_on</span>
+<span class="truncate">Hostel H7 • 2h ago</span>
+</div>
+</div>
+</div>
+<div class="w-full bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-neutral-light dark:border-slate-800 overflow-hidden">
+<div class="relative aspect-square bg-slate-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portable room air cooler for student hostel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU4QWq_mXr1mNH4QbeVb2bNdZIWmUtMPASGkfkpOtYKa34e0OWiFIngZCuTH2SKL6zB32oOC29-GPDDC6htniDTc0d_4YBukrrxNDZvCuj3l7byDEz-vqIDHl_xWPjDpEr1TK9r2XeskU5G8_bFsmB7eup27EscSR_Xjn-I9VkcdJHuxv5FOp5aVkFQqIFG3exOz0RBTcwTjYJzVSLcs5bjG_PcTlGv0qH2Hdp7iYiVDnx2Uo4csBgA4l4zAgIqWAa2VYU37znkA"/>
+<div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">RENT</div>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur rounded-full">
+<span class="material-symbols-outlined text-sm text-slate-900">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-base font-semibold text-slate-900 dark:text-slate-100 line-clamp-1">Room Cooler</h3>
+<p class="text-lg font-bold text-primary mt-1">₹80<span class="text-xs font-normal">/day</span></p>
+<div class="flex items-center gap-1 text-slate-500 text-[11px] mt-2">
+<span class="material-symbols-outlined text-xs">location_on</span>
+<span class="truncate">Hostel H5 • 10 min ago</span>
+</div>
+</div>
+</div>
+<div class="w-full bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-neutral-light dark:border-slate-800 overflow-hidden">
+<div class="relative aspect-square bg-slate-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Scientific calculator for engineering students" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtW7uk60C0lm4IFIhyTpJSBxeDCeVdyTCbiI-o53tgMxKOWH0HcsSOvDgEYKkKDgw0QZCqUiP8ZtWJyN_UVYOjoMEocjLJAEvw2IE9KRrffzBxMs2oaLXz9KPWmsskgEe14tQQ34TbtM4b5XKWmip12qGJR8PGS_bkv_WyrmdakTi-y7bWKr5psu1UAgRLoAH5ha6Eto6FKoUjRqcWU_ahPfFrBB512p2M2CdTXxqyWErn1L13fcKoX6qsIDZnS3Tb61HFADAG-A"/>
+<div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">RENT</div>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur rounded-full">
+<span class="material-symbols-outlined text-sm text-slate-900">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-base font-semibold text-slate-900 dark:text-slate-100 line-clamp-1">Scientific Calculator</h3>
+<p class="text-lg font-bold text-primary mt-1">₹20<span class="text-xs font-normal">/day</span></p>
+<div class="flex items-center gap-1 text-slate-500 text-[11px] mt-2">
+<span class="material-symbols-outlined text-xs">location_on</span>
+<span class="truncate">Library • 1h ago</span>
+</div>
+</div>
+</div>
+<div class="w-full bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-neutral-light dark:border-slate-800 overflow-hidden">
+<div class="relative aspect-square bg-slate-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Modern minimalist study table for student room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE5A3_HM1DKBQuY3SJxPCY8wJK80UU3ap-2wXEu3S1zEXZXw05FyBvv7AvpArAqlKEL5g5_9d2DlDex_P0_5TGFVaUFnpsWvg_2xHoQ9hY5DkmFbB6drtCGVF3NWE9R7OJTxWAMg-B2XTPag7HMqhZdyJTe2tGP5yXeuJBA-uT5JcP_ZO0YdpfKdD1r76r7Sdm44ad2fmTc6IZr3p79HGYS4BXvcUZX6Ycs4f4AnotDKt2Waaj__05yYAI09AbsKiPa684xJuvSg"/>
+<div class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">RENT</div>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur rounded-full">
+<span class="material-symbols-outlined text-sm text-slate-900">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-base font-semibold text-slate-900 dark:text-slate-100 line-clamp-1">Study Table</h3>
+<p class="text-lg font-bold text-primary mt-1">₹150<span class="text-xs font-normal">/month</span></p>
+<div class="flex items-center gap-1 text-slate-500 text-[11px] mt-2">
+<span class="material-symbols-outlined text-xs">location_on</span>
+<span class="truncate">Hostel H4 • 3h ago</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 w-full max-w-md bg-white dark:bg-slate-900 border-t border-neutral-light dark:border-slate-800 flex items-center justify-between px-2 pb-6 pt-2 z-20">
+<a class="flex flex-col items-center justify-center flex-1 gap-0.5 text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center flex-1 gap-0.5 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">sell</span>
+<span class="text-[10px] font-medium">Rentals</span>
+</a>
+<div class="flex flex-col items-center justify-center flex-1 -mt-8 relative">
+<button class="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 border-4 border-white dark:border-slate-900">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<span class="text-[10px] font-medium text-slate-400 mt-1">Post</span>
+</div>
+<a class="flex flex-col items-center justify-center flex-1 gap-0.5 text-slate-400" href="#">
+<span class="material-symbols-outlined">handyman</span>
+<span class="text-[10px] font-medium">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center flex-1 gap-0.5 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+</div>
+</body></html>

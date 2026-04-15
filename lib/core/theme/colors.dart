@@ -12,16 +12,20 @@ class AppColors {
   static const Color error = Color(0xFFDC2626);
   static const Color warning = Color(0xFFFFA000);
   static const Color info = Color(0xFF1976D2);
+  static const Color sellPill = Color(0xFF22C55E);
+  static const Color rentPill = Color(0xFFF97316);
+  static const Color requestPill = Color(0xFFA855F7);
+  static const Color servicePill = Color(0xFF3B82F6);
 
   // Neutral Colors
   static const Color background = Color(0xFFF9FAFB);
   static const Color surface = Color(0xFFFFFFFF);
-  
+
   // Text Colors
   static const Color textPrimary = Color(0xFF111827);
   static const Color textSecondary = Color(0xFF6B7280);
-  static const Color textHint = Color(0xFF9CA3AF); 
-  
+  static const Color textHint = Color(0xFF9CA3AF);
+
   // Borders & Dividers
   static const Color border = Color(0xFFE5E7EB);
   static const Color divider = Color(0xFFE5E7EB);

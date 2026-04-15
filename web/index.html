@@ -1,0 +1,703 @@
+<html>
+<head>
+  <script>
+    (function () {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function applyTheme(e) {
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        console.log("Theme updated live. isDark:", document.documentElement.classList.contains("dark"));
+      }
+
+      // Initial run
+      applyTheme(mediaQuery);
+
+      // Listen for changes (THIS IS THE FIX)
+      mediaQuery.addEventListener('change', applyTheme);
+    })();
+  </script>
+  <base href="$FLUTTER_BASE_HREF">
+   <meta property="og:title" content="Nexlist - Campus Marketplace">
+<meta property="og:description" content="Buy & sell items in your campus">
+<meta property="og:image" content="https://www.nexlist.in/icons/Icon-512.png">
+<meta property="og:url" content="https://nexlist.in">
+<meta property="og:type" content="website">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:site_name" content="Nexlist">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nexlist - Campus Marketplace">
+<meta name="twitter:description" content="Buy & sell items in your campus">
+<meta name="twitter:image" content="https://www.nexlist.in/icons/Icon-512.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Nexlist is a campus marketplace for students to buy, sell, rent items, and offer services within their college. Fast, simple, and local.">
+  <meta name="theme-color" content="#2F7DFF">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Nexlist">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <link rel="icon" href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.png?v=3" />
+  <link rel="canonical" href="https://www.nexlist.in/">
+
+  <title>Nexlist – Campus Marketplace for Students | Buy, Sell, Rent</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    #html-splash {
+      position: fixed;
+      inset: 0;
+      background: #0B1A2B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .splash-content {
+      text-align: center;
+      font-family: sans-serif;
+    }
+
+    .logo {
+      width: 80px;
+      margin-bottom: 16px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .wordmark {
+      width: 124px;
+      height: auto;
+      display: block;
+      margin: 8px auto 0;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #A0AEC0;
+      margin-bottom: 16px;
+    }
+
+    .loading-text {
+      font-size: 12px;
+      color: #A0AEC0;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      width: 120px;
+      height: 3px;
+      background: rgba(160, 174, 192, 0.24);
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .progress {
+      width: 40%;
+      height: 100%;
+      background: #2979ff;
+      animation: loading 1.2s infinite;
+    }
+
+    @keyframes loading {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(300%); }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nexlist",
+      "url": "https://www.nexlist.in",
+      "logo": "https://www.nexlist.in/icons/Icon-512.png",
+      "sameAs": [
+        "https://instagram.com/nex.list"
+      ]
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com?plugins=container-queries"></script>
+  <script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        background: "var(--bg-primary)",
+        surface: "var(--bg-primary)",
+        "surface-container": "var(--bg-secondary)",
+        "surface-container-high": "var(--bg-secondary)",
+        "surface-container-highest": "var(--bg-secondary)",
+        "surface-container-low": "var(--bg-primary)",
+        primary: "var(--accent)",
+        "primary-container": "#1E5ED8", // Or keep static
+        secondary: "#22C55E",
+        tertiary: "#FFA000",
+        "on-background": "var(--text-primary)",
+        "on-surface": "var(--text-primary)",
+        "on-surface-variant": "var(--text-secondary)",
+        outline: "var(--border-strong)"
+      },
+      fontFamily: {
+        display: ["Work Sans"],
+        body: ["Work Sans"]
+      },
+      borderRadius: {
+        DEFAULT: "1rem",
+        lg: "2rem",
+        xl: "3rem",
+        full: "9999px"
+      }
+    }
+  }
+}
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #F9FAFB;
+      --bg-secondary: #EEF2F7;
+      --surface: rgba(255,255,255,0.92);
+      --text-primary: #111827;
+      --text-secondary: #6B7280;
+      --accent: #2F6FE6;
+      --border-subtle: rgba(0,0,0,0.04);
+      --border-strong: rgba(0,0,0,0.06);
+      --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.12);
+      --shadow-hover: 0 10px 28px rgba(0, 0, 0, 0.15);
+    }
+    .dark {
+      --bg-primary: #070e1c;
+      --bg-secondary: #0B1220;
+      --surface: rgba(255,255,255,0.05);
+      --text-primary: #dce5ff;
+      --text-secondary: rgba(255,255,255,0.7);
+      --accent: #2F7DFF;
+      --border-subtle: rgba(255,255,255,0.03);
+      --border-strong: rgba(255,255,255,0.06);
+      --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.35);
+      --shadow-hover: 0 10px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    section { padding-top: 80px; padding-bottom: 80px; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Work Sans', sans-serif;
+    }
+
+    flt-glass-pane input,
+    flt-glass-pane textarea,
+    flt-text-editing-host input,
+    flt-text-editing-host textarea {
+      background: transparent !important;
+      border: 0 !important;
+      outline: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      appearance: none !important;
+      -webkit-appearance: none !important;
+    }
+
+    .glass {
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #60A5FA, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .fade-start {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .animate-fade-up {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    @keyframes float-subtle {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .floating-card {
+      animation: float-subtle 6s ease-in-out infinite;
+    }
+
+    .float-delay-1 { animation-delay: 0s; }
+    .float-delay-2 { animation-delay: 1.5s; }
+    .float-delay-3 { animation-delay: 3s; }
+
+    .hero-parallax {
+      transition: transform 0.6s ease-out;
+    }
+
+    .hero-scrolled {
+      transform: translateY(-12px);
+    }
+  </style>
+
+</head>
+
+<body class="bg-background text-on-background" style="margin:0;">
+  <div id="landing-shell">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-50 bg-background/70 backdrop-blur-xl">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center">
+          <!-- Light mode logo -->
+          <img src="assets/assets/branding/nexlist_logo.png" alt="Nexlist logo" class="block dark:hidden h-9 w-auto" />
+          <!-- Dark mode logo -->
+          <img src="assets/assets/branding/nexlist_logo_dark.png" alt="Nexlist logo" class="hidden dark:block h-9 w-auto" />
+        </div>
+        <button id="nav-login-btn" onclick="window.location.href='/login'"
+          class="px-5 py-2 bg-primary text-[var(--text-primary)] rounded-2xl transition-all duration-300 font-semibold shadow-[0_6px_20px_rgba(47,125,255,0.25)] hover:shadow-[0_10px_30px_rgba(47,125,255,0.35)] hover:scale-105">
+          Log In
+        </button>
+      </div>
+    </nav>
+
+    <main class="pt-24">
+      <!-- HERO -->
+      <section id="hero-section" class="bg-[var(--bg-secondary)] max-w-7xl mx-auto px-6 py-20 pb-32 sm:pb-28 lg:pb-16 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center hero-parallax overflow-visible">
+        <div class="space-y-8 fade-start fade-on-load">
+          <div class="inline-flex items-center gap-2 text-xs text-blue-400 bg-[var(--surface)] px-3 py-1 rounded-full mb-4">
+            ⚡ Live listings from your campus
+          </div>
+          <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-on-background">
+            Connect.<br>
+            Exchange.<br>
+            <span class="gradient-text">Secure.</span>
+          </h1>
+          <p class="text-lg text-on-surface-variant leading-relaxed max-w-md">
+            The student-only marketplace for your campus. Trade, rent, and find services with people you trust.
+          </p>
+          <div class="flex flex-col gap-4">
+            <p class="text-xs text-[var(--text-secondary)] mb-2">
+              Buy, rent or request anything on campus
+            </p>
+            <button id="hero-browse-btn" onclick="window.location.href='/login'"
+              class="px-10 py-5 bg-primary text-[var(--text-primary)] rounded-2xl active:scale-[0.98] transition-all duration-300 font-bold text-lg fade-start fade-on-load shadow-[0_6px_20px_rgba(47,125,255,0.25)] hover:shadow-[0_10px_30px_rgba(47,125,255,0.35)] hover:scale-[1.05]">
+              Browse Marketplace
+            </button>
+            <div class="flex items-center gap-4 text-sm text-[var(--text-secondary)] mt-3 cursor-default">
+              <span class="flex items-center gap-1">
+                🛍️ <span>Buy</span>
+              </span>
+              <span class="opacity-40">•</span>
+              <span class="flex items-center gap-1">
+                🔁 <span>Rent</span>
+              </span>
+              <span class="opacity-40">•</span>
+              <span class="flex items-center gap-1 text-purple-400/80">
+                💬 <span>Request</span>
+              </span>
+            </div>
+            <p class="text-xs text-[var(--text-secondary)] mt-4">
+              Only verified students • No spam • Campus-only access
+            </p>
+          </div>
+        </div>
+
+        <!-- HERO CARDS -->
+        <div class="relative w-full max-w-[1100px] mx-auto h-auto lg:h-[420px] flex flex-col items-center lg:block overflow-visible fade-start fade-on-load">
+
+          <!-- CENTER FRAME — bounds the SELL + RENT card cluster -->
+          <div class="flex justify-center gap-4 mt-6 lg:mt-0 lg:absolute lg:top-0 lg:left-1/2 lg:-translate-x-1/2 w-auto lg:w-[420px] lg:h-full">
+
+            <!-- SELL CARD -->
+            <div class="w-[140px] sm:w-[160px] lg:w-[190px] lg:absolute lg:top-0 lg:left-0 z-30 floating-card float-delay-1">
+             <div class="group cursor-pointer">
+               <div class="bg-[var(--surface)] backdrop-blur-xl rounded-2xl border border-[var(--border-strong)] shadow-lg shadow-black/20 transition-all duration-150 hover:scale-[1.03] hover:-translate-y-1 active:scale-[0.97] hover:shadow-xl hover:shadow-black/40 hover:bg-white/10 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] overflow-hidden will-change-[transform]">
+                 <div class="h-[140px] sm:h-[160px] w-full overflow-hidden">
+                   <img src="images/cycle.jpg" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                 </div>
+                 <div class="p-3 flex flex-col gap-1">
+                   <div class="flex items-center justify-between">
+                     <p class="text-sm font-semibold text-[var(--text-primary)]">Cycle</p>
+                     <span class="text-[10px] text-blue-400 font-semibold tracking-wide transition-colors group-hover:text-[var(--text-primary)]">SELL</span>
+                   </div>
+                   <p class="text-xs font-semibold text-[var(--text-secondary)]">₹2,000</p>
+                 </div>
+               </div>
+             </div>
+            </div>
+
+            <!-- RENT CARD -->
+            <div class="w-[140px] sm:w-[160px] lg:w-[190px] lg:absolute lg:top-6 lg:right-0 z-20 floating-card float-delay-2">
+             <div class="group cursor-pointer">
+               <div class="bg-[var(--surface)] backdrop-blur-xl rounded-2xl border border-[var(--border-strong)] shadow-lg shadow-black/20 transition-all duration-150 hover:scale-[1.03] hover:-translate-y-1 active:scale-[0.97] hover:shadow-xl hover:shadow-black/40 hover:bg-white/10 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] overflow-hidden will-change-[transform]">
+                 <div class="h-[140px] sm:h-[160px] w-full overflow-hidden">
+                   <img src="images/cooler.jpg" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                 </div>
+                 <div class="p-3 flex flex-col gap-1">
+                   <div class="flex items-center justify-between">
+                     <p class="text-sm font-semibold text-[var(--text-primary)]">Cooler</p>
+                     <span class="text-[10px] text-orange-400 font-semibold tracking-wide transition-colors group-hover:text-[var(--text-primary)]">RENT</span>
+                   </div>
+                   <p class="text-xs font-semibold text-[var(--text-secondary)]">₹35/day</p>
+                 </div>
+               </div>
+             </div>
+            </div>
+
+          </div>
+
+          <!-- SERVICE CARD -->
+          <div class="mt-4 lg:mt-0 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 max-w-[420px] mx-auto px-4 z-10">
+           <div class="group cursor-pointer">
+             <div class="bg-[var(--surface)] backdrop-blur-xl rounded-2xl border border-[var(--border-strong)] shadow-lg shadow-black/20 transition-all duration-150 hover:scale-[1.03] hover:-translate-y-1 active:scale-[0.97] hover:shadow-xl hover:shadow-black/40 hover:bg-white/[0.07] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] overflow-hidden before:absolute before:inset-0 before:rounded-2xl before:bg-[linear-gradient(120deg,rgba(255,255,255,0.06),transparent_40%)] before:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:bg-transparent group-active:after:bg-white/5 will-change-[transform]">
+               <div class="p-4 flex items-start gap-3">
+                 <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                   <span class="material-symbols-outlined text-[var(--text-secondary)] text-xl">person</span>
+                 </div>
+                 <div class="flex-1 min-w-0 font-normal">
+                   <p class="text-[11px] text-blue-400 mb-1 font-semibold tracking-wide transition-colors group-hover:text-[var(--text-primary)]">SERVICE</p>
+                   <p class="text-sm font-semibold text-[var(--text-primary)]">Assignment Writing</p>
+                   <p class="text-xs text-[var(--text-secondary)] leading-tight line-clamp-2">
+                     Get help with assignments and reports from verified peers
+                   </p>
+                   <p class="text-xs text-blue-400 mt-1 font-medium transition-colors group-hover:text-[var(--text-primary)]">From ₹50</p>
+                 </div>
+               </div>
+             </div>
+           </div>
+          </div>
+
+          <!-- REQUEST CARD -->
+          <div class="mt-2 lg:mt-0 lg:absolute lg:top-full max-w-[420px] mx-auto lg:left-0 lg:right-0 px-4 z-0 scale-[0.97] opacity-80">
+           <div class="group cursor-pointer">
+             <div class="mt-2 bg-[var(--surface)] backdrop-blur-md rounded-2xl border border-[var(--border-strong)] shadow-lg shadow-black/20 transition-all duration-150 hover:scale-[1.03] hover:-translate-y-1 active:scale-[0.97] hover:shadow-xl hover:shadow-black/40 hover:bg-white/[0.07] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] overflow-hidden before:absolute before:inset-0 before:rounded-2xl before:bg-[linear-gradient(120deg,rgba(255,255,255,0.06),transparent_40%)] before:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:bg-transparent group-active:after:bg-white/5 will-change-[transform]">
+               <div class="p-4 flex items-start gap-3">
+                 <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                   <span class="material-symbols-outlined text-[var(--text-secondary)] text-xl">chat_bubble</span>
+                 </div>
+                 <div class="flex-1 min-w-0 font-normal">
+                   <p class="text-[11px] text-purple-400 mb-1 font-semibold tracking-wide transition-colors group-hover:text-[var(--text-primary)]">REQUEST</p>
+                   <p class="text-sm font-semibold text-[var(--text-primary)]">Looking for a Bike</p>
+                   <p class="text-xs text-[var(--text-secondary)] leading-tight line-clamp-2">
+                     Need a cycle for 2 months, budget friendly
+                   </p>
+                   <p class="text-xs text-purple-400 mt-1 font-medium transition-colors group-hover:text-[var(--text-primary)]">Posted by student</p>
+                 </div>
+               </div>
+             </div>
+           </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- CATEGORIES -->
+      <section class="mt-6 sm:mt-8 border-t border-[var(--border-subtle)] bg-[var(--bg-secondary)] rounded-t-3xl pt-10 pb-16 text-center scroll-reveal fade-start">
+        <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-10 text-on-background">Browse by Category</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mt-10">
+          <div class="group cursor-pointer" onclick="console.log('Books category clicked')">
+            <div class="bg-white dark:bg-surface-container rounded-2xl p-6 border border-[var(--border-strong)] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] hover:bg-surface-container-high text-left category-card fade-start">
+              <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-primary">menu_book</span>
+              </div>
+              <p class="font-semibold text-on-background">Books</p>
+              <p class="text-sm text-on-surface-variant mt-1">Buy and sell textbooks</p>
+            </div>
+          </div>
+          <div class="group cursor-pointer" onclick="console.log('Tech category clicked')">
+            <div class="bg-white dark:bg-surface-container rounded-2xl p-6 border border-[var(--border-strong)] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] hover:bg-surface-container-high text-left category-card fade-start">
+              <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-primary">laptop_mac</span>
+              </div>
+              <p class="font-semibold text-on-background">Tech</p>
+              <p class="text-sm text-on-surface-variant mt-1">Electronics and devices</p>
+            </div>
+          </div>
+          <div class="group cursor-pointer" onclick="console.log('Cycles category clicked')">
+            <div class="bg-white dark:bg-surface-container rounded-2xl p-6 border border-[var(--border-strong)] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] hover:bg-surface-container-high text-left category-card fade-start">
+              <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-primary">directions_bike</span>
+              </div>
+              <p class="font-semibold text-on-background">Cycles</p>
+              <p class="text-sm text-on-surface-variant mt-1">Bikes and campus rides</p>
+            </div>
+          </div>
+          <div class="group cursor-pointer" onclick="console.log('Furniture category clicked')">
+            <div class="bg-white dark:bg-surface-container rounded-2xl p-6 border border-[var(--border-strong)] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] hover:bg-surface-container-high text-left category-card fade-start">
+              <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-primary">weekend</span>
+              </div>
+              <p class="font-semibold text-on-background">Furniture</p>
+              <p class="text-sm text-on-surface-variant mt-1">Hostel room essentials</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU CAN DO -->
+      <section class="bg-surface-container py-20 px-6 scroll-reveal fade-start">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-3xl font-bold mb-10 text-on-background">What You Can Do</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white dark:bg-surface-container p-4 rounded-2xl border border-[var(--border-strong)] shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] md:hover:-translate-y-0.5 transition-all duration-300">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs px-2 py-1 rounded-full font-semibold text-primary bg-primary/10">SELL</span>
+                  <span class="material-symbols-outlined text-on-surface-variant text-sm opacity-70">sell</span>
+                </div>
+                <p class="font-semibold text-on-background text-lg">Buy/Sell</p>
+                <p class="text-sm text-on-surface-variant">Turn textbooks or mini-fridges into cash near your dorm.</p>
+                <p class="text-xs text-primary pt-1">Local Deals</p>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-surface-container p-4 rounded-2xl border border-[var(--border-strong)] shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] md:hover:-translate-y-0.5 transition-all duration-300">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs px-2 py-1 rounded-full font-semibold text-tertiary bg-tertiary/10">RENT</span>
+                  <span class="material-symbols-outlined text-on-surface-variant text-sm opacity-70">calendar_today</span>
+                </div>
+                <p class="font-semibold text-on-background text-lg">Rent</p>
+                <p class="text-sm text-on-surface-variant">Need a drill or a gala dress? Rent from a neighbor.</p>
+                <p class="text-xs text-tertiary pt-1">Daily Rates</p>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-surface-container p-4 rounded-2xl border border-[var(--border-strong)] shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] md:hover:-translate-y-0.5 transition-all duration-300">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs px-2 py-1 rounded-full font-semibold text-secondary bg-secondary/10">REQUEST</span>
+                  <span class="material-symbols-outlined text-on-surface-variant text-sm opacity-70">campaign</span>
+                </div>
+                <p class="font-semibold text-on-background text-lg">Requests</p>
+                <p class="text-sm text-on-surface-variant">Can't find it? Post a request. Someone likely has it.</p>
+                <p class="text-xs text-secondary pt-1">Bounties</p>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-surface-container p-4 rounded-2xl border border-[var(--border-strong)] shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] md:hover:-translate-y-0.5 transition-all duration-300">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs px-2 py-1 rounded-full font-semibold text-primary bg-primary/10">SERVICE</span>
+                  <span class="material-symbols-outlined text-on-surface-variant text-sm opacity-70">build</span>
+                </div>
+                <p class="font-semibold text-on-background text-lg">Services</p>
+                <p class="text-sm text-on-surface-variant">Offer your skills. From tutoring to photography.</p>
+                <p class="text-xs text-primary pt-1">Side Hustle</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRUST -->
+      <section class="bg-surface-container py-20 px-6 scroll-reveal fade-start">
+        <div class="max-w-4xl mx-auto text-left space-y-6">
+          <h2 class="text-3xl font-bold text-on-background">Built for trust on campus</h2>
+          <p class="text-on-surface-variant mt-3 max-w-xl leading-relaxed">
+            We’ve eliminated the risks of public marketplaces by creating a closed ecosystem just for your campus.
+          </p>
+          <div class="mt-6 bg-white dark:bg-surface-container rounded-3xl border border-[var(--border-strong)] p-6 shadow-[0_6px_20px_rgba(0,0,0,0.06)]">
+            <div class="space-y-3">
+              <div class="flex items-start gap-4 p-4 rounded-2xl transition-all duration-200 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] hover:bg-surface-container-high">
+                <div class="w-12 h-12 flex shrink-0 items-center justify-center rounded-2xl bg-surface-container-high border border-white/[0.05]">
+                  <span class="material-symbols-outlined text-on-surface-variant">lock</span>
+                </div>
+                <div>
+                  <p class="font-semibold text-on-background">Campus-only access</p>
+                  <p class="text-sm text-on-surface-variant mt-1 leading-relaxed">Access is restricted to users with a valid university email address, ensuring local interactions.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-4 rounded-2xl transition-all duration-200 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] hover:bg-surface-container-high">
+                <div class="w-12 h-12 flex shrink-0 items-center justify-center rounded-2xl bg-surface-container-high border border-white/[0.05]">
+                  <span class="material-symbols-outlined text-on-surface-variant">verified</span>
+                </div>
+                <div>
+                  <p class="font-semibold text-on-background">Verified students</p>
+                  <p class="text-sm text-on-surface-variant mt-1 leading-relaxed">Every member is a verified student or faculty, creating a high-trust environment for trading.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-4 rounded-2xl transition-all duration-200 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] hover:bg-surface-container-high">
+                <div class="w-12 h-12 flex shrink-0 items-center justify-center rounded-2xl bg-surface-container-high border border-white/[0.05]">
+                  <span class="material-symbols-outlined text-on-surface-variant">visibility_off</span>
+                </div>
+                <div>
+                  <p class="font-semibold text-on-background">No public marketplace</p>
+                  <p class="text-sm text-on-surface-variant mt-1 leading-relaxed">Your listings are never visible to the general public, keeping your campus activity private.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section id="cta-section" class="bg-surface-container-high py-20 text-center scroll-reveal fade-start">
+        <h2 class="text-3xl font-bold mb-6 text-on-background">
+          Ready to join your campus marketplace?
+        </h2>
+        <button onclick="window.location.href='/login'"
+          class="px-10 py-5 bg-primary text-[var(--text-primary)] rounded-2xl transition-all duration-300 font-bold shadow-[0_6px_20px_rgba(47,125,255,0.25)] hover:shadow-[0_10px_30px_rgba(47,125,255,0.35)] hover:scale-105">
+          Enter Nexlist
+        </button>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <section class="bg-background border-t border-white/[0.03] py-10 px-6">
+      <div class="max-w-xl mx-auto flex flex-col items-center gap-4 text-sm text-on-surface-variant text-center">
+        <div class="flex items-center gap-2">
+          <span class="font-semibold text-on-background">NEXLIST</span>
+          <span>© 2026</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-base">mail</span>
+          <a href="mailto:nexlisthelp@gmail.com" class="hover:text-on-background transition-colors">nexlisthelp@gmail.com</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="https://instagram.com/nex.list" target="_blank" class="hover:text-on-background transition-colors">
+            Follow @nex.list
+          </a>
+        </div>
+        <div class="flex items-center gap-2 text-xs opacity-60 mt-2">
+          <span>v1.1.3 • Powered by NEX</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      const path = window.location.pathname;
+
+      const isAppRoute = [
+        '/login',
+        '/home',
+        '/listing',
+        '/profile',
+        '/services',
+        '/requests',
+        '/about'
+      ].some(route => path.startsWith(route));
+
+      const landing = document.getElementById('landing-shell');
+
+      if (isAppRoute) {
+        // Kill landing BEFORE Flutter loads
+        if (landing) {
+          landing.remove();
+        }
+
+        // Load Flutter
+        const script = document.createElement('script');
+        script.src = "flutter_bootstrap.js?v=1776185638";
+        document.body.appendChild(script);
+      }
+    })();
+  </script>
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const isAbout = params.get('mode') === 'about';
+      if (!isAbout) return;
+
+      function removeElements() {
+        console.log('ABOUT MODE ACTIVE');
+
+        const login = document.getElementById('nav-login-btn');
+        if (login) {
+          login.remove();
+          console.log('Removed login');
+        }
+
+        const browse = document.getElementById('hero-browse-btn');
+        if (browse) {
+          browse.remove();
+          console.log('Removed browse');
+        }
+
+        const cta = document.getElementById('cta-section');
+        if (cta) {
+          cta.remove();
+          console.log('Removed CTA');
+        }
+      }
+
+      removeElements();
+    })();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const els = document.querySelectorAll('.fade-on-load');
+
+      els.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add('animate-fade-up');
+          el.classList.remove('fade-start');
+        }, i * 120);
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const els = document.querySelectorAll('.scroll-reveal');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-up');
+            entry.target.classList.remove('fade-start');
+
+            const cards = entry.target.querySelectorAll('.category-card');
+            cards.forEach((card, i) => {
+              setTimeout(() => {
+                card.classList.add('animate-fade-up');
+                card.classList.remove('fade-start');
+              }, i * 120);
+            });
+          } else {
+            entry.target.classList.remove('animate-fade-up');
+            entry.target.classList.add('fade-start');
+
+            const cards = entry.target.querySelectorAll('.category-card');
+            cards.forEach((card) => {
+              card.classList.remove('animate-fade-up');
+              card.classList.add('fade-start');
+            });
+          }
+        });
+      }, { threshold: 0.15 });
+
+      els.forEach(el => observer.observe(el));
+    });
+  </script>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const hero = document.getElementById('hero-section');
+      if (window.scrollY > 50) {
+        hero.classList.add('hero-scrolled');
+      } else {
+        hero.classList.remove('hero-scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>

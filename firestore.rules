@@ -1,0 +1,115 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isUserOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isHardcodedAdmin() {
+      return request.auth != null &&
+        request.auth.uid in [
+          "PASTE_YOUR_UID_HERE",
+          "PASTE_SHREYAN_UID_HERE"
+        ];
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+          exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+
+    function listingHasNoPhone() {
+      return !('phone' in request.resource.data);
+    }
+
+    function listingOverrideFieldsPresent(data) {
+      return 'contactName' in data || 'contactPhone' in data;
+    }
+
+    function overrideFieldChanged(field) {
+      let nextValue = field in request.resource.data
+          ? request.resource.data[field]
+          : null;
+      let previousValue = field in resource.data ? resource.data[field] : null;
+      return nextValue != previousValue;
+    }
+
+    function createOverrideWriteAllowed() {
+      return !listingOverrideFieldsPresent(request.resource.data) || isHardcodedAdmin();
+    }
+
+    function updateOverrideWriteAllowed() {
+      return (!overrideFieldChanged('contactName') &&
+              !overrideFieldChanged('contactPhone')) ||
+          isHardcodedAdmin();
+    }
+
+    function currentUserHasClaimablePhone() {
+      return isSignedIn() &&
+          exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          'contactPhone' in resource.data &&
+          resource.data.contactPhone ==
+              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.phone;
+    }
+
+    function isListingClaimUpdate() {
+      return currentUserHasClaimablePhone() &&
+          request.resource.data.sellerId == request.auth.uid &&
+          request.resource.data.user_name ==
+              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.name &&
+          !('contactPhone' in request.resource.data) &&
+          !('contactName' in request.resource.data) &&
+          request.resource.data.diff(resource.data).changedKeys().hasOnly([
+            'sellerId',
+            'seller_id',
+            'contactPhone',
+            'contactName',
+            'user_name',
+            'created_by_name',
+          ]) &&
+          (
+            !('created_by_name' in request.resource.data) ||
+            request.resource.data.created_by_name ==
+                get(/databases/$(database)/documents/users/$(request.auth.uid)).data.name
+          );
+    }
+
+    function isListingOwner() {
+      return isSignedIn() &&
+          (resource.data.sellerId == request.auth.uid ||
+              resource.data.seller_id == request.auth.uid);
+    }
+
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if isUserOwner(userId) &&
+          (!('isAdmin' in request.resource.data) || (resource != null && request.resource.data.isAdmin == resource.data.isAdmin));
+
+      match /saved_items/{savedItemId} {
+        allow read, write: if isUserOwner(userId);
+      }
+    }
+
+    match /listings/{listingId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() &&
+          request.resource.data.sellerId == request.auth.uid &&
+          listingHasNoPhone() &&
+          createOverrideWriteAllowed();
+      allow update: if ((isListingOwner() || isHardcodedAdmin()) &&
+              listingHasNoPhone() &&
+              updateOverrideWriteAllowed()) ||
+          isListingClaimUpdate();
+      allow delete: if isListingOwner() || isHardcodedAdmin();
+    }
+
+    match /support_requests/{requestId} {
+      allow create: if isSignedIn();
+    }
+  }
+}

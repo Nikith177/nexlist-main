@@ -1,0 +1,21 @@
+Launching lib/main.dart on macOS in debug mode...
+Building macOS application...                                   
+lib/features/profile/presentation/edit_profile_screen.dart:7:8: Error: Error when reading 'lib/shared/widgets/custom_button.dart': No such file or directory
+import '../../../shared/widgets/custom_button.dart';
+       ^
+lib/features/profile/presentation/edit_profile_screen.dart:251:24: Error: The method 'CustomButton' isn't defined for the type '_EditProfileScreenState'.
+ - '_EditProfileScreenState' is from 'package:nexlist_mobile/features/profile/presentation/edit_profile_screen.dart' ('lib/features/profile/presentation/edit_profile_screen.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'CustomButton'.
+                child: CustomButton(
+                       ^^^^^^^^^^^^
+Target kernel_snapshot_program failed: Exception
+Failed to package /Users/nikith/nexlist-v3/nexlist-mobile.
+Command PhaseScriptExecution failed with a nonzero exit code
+warning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'abseil' from project 'Pods')
+warning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'BoringSSL-GRPC' from project 'Pods')
+warning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'gRPC-Core' from project 'Pods')
+warning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'gRPC-C++' from project 'Pods')
+warning: Run script build phase 'Run Script' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Flutter Assemble' from project 'Runner')
+** BUILD FAILED **
+
+Error: Build process failed
