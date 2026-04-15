@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import '../application/auth_user_bootstrap.dart';
 import '../../../core/theme/colors.dart';
 import '../../../core/theme/typography.dart';
-import '../../../shared/utils/navigation_trace_utils.dart';
 import '../../../shared/utils/phone_gate_utils.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -52,10 +51,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _startSignIn() async {
     if (_isSigningIn) return;
 
-    // Guard: Prevent double login or loops
     if (FirebaseAuth.instance.currentUser != null) {
-      print("LOGIN: user already logged in, redirecting to home");
-      if (mounted) context.tracedGo('/home');
+      print("LOGIN: user already logged in");
       return;
     }
 
@@ -74,7 +71,11 @@ class _LoginScreenState extends State<LoginScreen> {
           provider,
         );
         if (userCredential.user != null) {
-          await AuthUserBootstrap.ensureUserProfile(userCredential.user!);
+          try {
+            await AuthUserBootstrap.ensureUserProfile(userCredential.user!);
+          } catch (e) {
+            print("BOOTSTRAP FAILED: $e");
+          }
           print("LOGIN: success, user = ${userCredential.user?.uid}");
           debugPrint('LOGIN SUCCESS: ${userCredential.user?.email}');
         }
@@ -104,13 +105,16 @@ class _LoginScreenState extends State<LoginScreen> {
           throw Exception('Authentication failed: user is null');
         }
 
-        await AuthUserBootstrap.ensureUserProfile(user);
+        try {
+          await AuthUserBootstrap.ensureUserProfile(user);
+        } catch (e) {
+          print("BOOTSTRAP FAILED: $e");
+        }
         if (!mounted) return;
         final identity = await PhoneGateUtils.ensureIdentity(context);
 
         if (!mounted || identity == null) return;
-        print("LOGIN: success (not web), user = ${user?.uid}");
-        context.tracedGo('/home');
+        print("LOGIN: success (not web), user = ${user.uid}");
       }
     } catch (e) {
       print("LOGIN: failed");
@@ -121,9 +125,6 @@ class _LoginScreenState extends State<LoginScreen> {
         });
       }
       final errorMessage = AuthUserBootstrap.formatAuthError(e);
-      await AuthUserBootstrap.signOutEverywhere(
-        /*googleSignIn: _googleSignIn*/
-      );
 
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -134,10 +135,11 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       );
     } finally {
-      if (!mounted) return;
-      setState(() {
-        _isSigningIn = false;
-      });
+      if (mounted) {
+        setState(() {
+          _isSigningIn = false;
+        });
+      }
     }
   }
 

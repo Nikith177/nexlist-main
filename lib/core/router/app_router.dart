@@ -62,31 +62,30 @@ final goRouter = GoRouter(
   redirect: (context, state) {
     final user = FirebaseAuth.instance.currentUser;
     final isLoggedIn = user != null;
-    final isLoggingIn = state.matchedLocation == '/login';
-    final isAuthGateRoute = state.matchedLocation == '/';
-    final isListingRoute = state.matchedLocation.startsWith('/listing');
+    final location = state.matchedLocation;
+    final isLoginRoute = location == '/login';
+    final isAuthGateRoute = location == '/';
     print(
-      "NAVIGATION: redirect check location=${state.matchedLocation}, user=${user?.uid}, isLoggedIn=$isLoggedIn",
+      "NAVIGATION: redirect check location=$location, user=${user?.uid}, isLoggedIn=$isLoggedIn",
     );
 
-    if (isListingRoute || isAuthGateRoute) {
-      print("NAVIGATION: redirect bypass for ${state.matchedLocation}");
-      return null;
-    }
-
-    if (!isLoggedIn && !isLoggingIn) {
+    if (!isLoggedIn) {
+      if (isAuthGateRoute || isLoginRoute) {
+        print("NAVIGATION: staying at $location");
+        return null;
+      }
       print("NAVIGATION: going to LOGIN (redirect)");
       print("NAVIGATION: redirect -> /login");
       return '/login';
     }
 
-    if (isLoggedIn && isLoggingIn) {
+    if (isAuthGateRoute || isLoginRoute) {
       print("NAVIGATION: going to HOME (redirect)");
       print("NAVIGATION: redirect -> /home");
       return '/home';
     }
 
-    print("NAVIGATION: staying at ${state.matchedLocation}");
+    print("NAVIGATION: staying at $location");
     return null;
   },
   routes: [

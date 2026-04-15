@@ -540,7 +540,10 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
                       color: colors.onSurface,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                 const SizedBox(height: 12),
+                 if (sellerId.isEmpty)
+                   const Text('Seller info unavailable')
+                 else
                   FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
                     future: FirebaseFirestore.instance
                         .collection('users')
@@ -556,7 +559,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
                       }
 
                       if (sellerSnapshot.hasError) {
-                        return Text(sellerSnapshot.error.toString());
+                        return const Text('Seller info unavailable');
                       }
 
                       final sellerData =

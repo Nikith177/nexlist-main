@@ -228,7 +228,7 @@ new_scaffold = f"""
                       }}
 
                       if (sellerSnapshot.hasError) {{
-                        return Text(sellerSnapshot.error.toString());
+                        return const Text('Seller info unavailable');
                       }}
 
                       final sellerData = sellerSnapshot.data?.data() ?? const <String, dynamic>{{}};

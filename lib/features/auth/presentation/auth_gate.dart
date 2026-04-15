@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../shared/utils/navigation_trace_utils.dart';
 import 'login_screen.dart';
 
 class AuthGate extends StatefulWidget {
@@ -13,6 +11,36 @@ class AuthGate extends StatefulWidget {
 }
 
 class _AuthGateState extends State<AuthGate> with WidgetsBindingObserver {
+  Widget _buildLoadingScaffold(BuildContext context) {
+    final isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+
+    return Scaffold(
+      backgroundColor: isDark ? Colors.black : Colors.white,
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: 24,
+              width: 24,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                color: isDark ? Colors.white : Colors.black,
+              ),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              "Loading Nexlist...",
+              style: TextStyle(
+                color: isDark ? Colors.grey.shade400 : Colors.grey.shade700,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -44,36 +72,7 @@ class _AuthGateState extends State<AuthGate> with WidgetsBindingObserver {
         print("AUTH: hasData = ${snapshot.hasData}");
         print("AUTH: user = ${snapshot.data?.uid}");
         if (snapshot.connectionState == ConnectionState.waiting) {
-          final isDark =
-              MediaQuery.of(context).platformBrightness == Brightness.dark;
-
-          return Scaffold(
-            backgroundColor: isDark ? Colors.black : Colors.white,
-            body: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    height: 24,
-                    width: 24,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      color: isDark ? Colors.white : Colors.black,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    "Loading Nexlist...",
-                    style: TextStyle(
-                      color: isDark
-                          ? Colors.grey.shade400
-                          : Colors.grey.shade700,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
+          return _buildLoadingScaffold(context);
         }
 
         if (snapshot.data == null) {
@@ -81,15 +80,8 @@ class _AuthGateState extends State<AuthGate> with WidgetsBindingObserver {
           return const LoginScreen();
         }
 
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (context.mounted &&
-              GoRouterState.of(context).matchedLocation == '/') {
-            print("AUTH: authenticated user at AuthGate");
-            context.tracedGo('/home');
-          }
-        });
-
-        return const SizedBox.shrink();
+        print("AUTH: authenticated user at AuthGate");
+        return _buildLoadingScaffold(context);
       },
     );
   }
