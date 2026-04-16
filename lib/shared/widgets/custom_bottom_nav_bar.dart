@@ -157,29 +157,6 @@ class ScaffoldWithNavBar extends StatefulWidget {
 class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
   bool _isSheetOpen = false;
 
-  late final GoRouter _router;
-
-  @override
-  void initState() {
-    super.initState();
-    _router = GoRouter.of(context);
-    _router.routerDelegate.addListener(_handleRouteChange);
-  }
-
-  @override
-  void dispose() {
-    _router.routerDelegate.removeListener(_handleRouteChange);
-    super.dispose();
-  }
-
-  void _handleRouteChange() {
-    if (!mounted) return;
-    final navigator = Navigator.of(context);
-    if (navigator.canPop()) {
-      navigator.pop();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

@@ -1375,12 +1375,53 @@ class _HomeScreenState extends State<HomeScreen> {
     final onSurfaceMuted = onSurface.withValues(alpha: 0.72);
 
     if (_campusId == null) {
+      final isDark = theme.brightness == Brightness.dark;
+      final logoAsset = isDark
+          ? 'assets/branding/nexlist_logo_dark.png'
+          : 'assets/branding/nexlist_logo.png';
+
       return ColoredBox(
         color: theme.scaffoldBackgroundColor,
         child: SafeArea(
           child: Center(
             child: _profileLoadError == null
-                ? CircularProgressIndicator(color: colors.primary)
+                ? SizedBox(
+                    width: 220,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(logoAsset, width: 140),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Campus Marketplace',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: onSurfaceMuted,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          'Setting up your campus...',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: onSurface.withValues(alpha: 0.54),
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        SizedBox(
+                          width: 120,
+                          height: 3,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(1.5),
+                            child: LinearProgressIndicator(
+                              backgroundColor: onSurface.withValues(alpha: 0.14),
+                              color: colors.primary,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 : Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
