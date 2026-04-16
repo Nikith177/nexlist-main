@@ -47,6 +47,7 @@ class _PostListingScreenState extends State<PostListingScreen> {
   String? _selectedHostel;
   String? _campusId;
   bool _isUrgent = false;
+  bool _isPassoutSale = false;
   bool _allowNegotiation = true;
   bool _isLoading = false;
   bool _showPostingSuccess = false;
@@ -109,6 +110,9 @@ class _PostListingScreenState extends State<PostListingScreen> {
       _selectedImage = null;
       _selectedImagePreviewBytes = null;
       _isUrgent = false;
+      if (typeValue != 'sell') {
+        _isPassoutSale = false;
+      }
     }
 
     if (notify) {
@@ -663,6 +667,7 @@ class _PostListingScreenState extends State<PostListingScreen> {
               ..._buildLocationPayload(),
               'type': _selectedType,
               'is_urgent': (_selectedType == 'request') ? _isUrgent : false,
+              'is_passout_sale': (_selectedType == 'sell') ? _isPassoutSale : false,
               'allow_negotiation': allowNegotiation,
               'campus_id': campusId,
               if (isAdmin && normalizedContactName != null)
@@ -1734,7 +1739,7 @@ class _PostListingScreenState extends State<PostListingScreen> {
     required bool showNegotiation,
     required bool showUrgent,
   }) {
-    if (!showNegotiation && !showUrgent) return const SizedBox.shrink();
+    if (!showNegotiation && !showUrgent && _selectedType != 'sell') return const SizedBox.shrink();
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -1744,6 +1749,49 @@ class _PostListingScreenState extends State<PostListingScreen> {
       ),
       child: Column(
         children: [
+          if (_selectedType == 'sell')
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.school_outlined,
+                        color: AppColors.primary,
+                        size: 20,
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Passout Sale',
+                              style: AppTypography.bodyLarge.copyWith(
+                                color: _onSurfaceColor,
+                              ),
+                            ),
+                            Text(
+                              'Selling before leaving campus',
+                              style: AppTypography.bodySmall.copyWith(
+                                color: _onSurfaceMuted,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Switch(
+                  value: _isPassoutSale,
+                  activeThumbColor: AppColors.primary,
+                  onChanged: (v) => setState(() => _isPassoutSale = v),
+                ),
+              ],
+            ),
+          if (_selectedType == 'sell' && (showUrgent || showNegotiation)) const Divider(height: 24),
           if (showUrgent)
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

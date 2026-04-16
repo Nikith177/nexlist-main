@@ -22,6 +22,7 @@ class ListingCard extends StatelessWidget {
   final VoidCallback? onFavoriteTap;
   final Widget? topMenu;
   final String? heroTag;
+  final bool isPassoutSale;
 
   const ListingCard({
     super.key,
@@ -38,6 +39,7 @@ class ListingCard extends StatelessWidget {
     this.onFavoriteTap,
     this.topMenu,
     this.heroTag,
+    this.isPassoutSale = false,
   });
 
   @override
@@ -128,8 +130,14 @@ class ListingCard extends StatelessWidget {
                         top: 8,
                         left: 8,
                         child: AppPill(
-                          label: tagText.toUpperCase(),
-                          baseColor: tagColor,
+                          label: tagText.toUpperCase() == 'FREE'
+                              ? 'FREE'
+                              : (isPassoutSale ? 'PASSOUT SALE' : tagText.toUpperCase()),
+                          baseColor: tagText.toUpperCase() == 'FREE'
+                              ? tagColor
+                              : (isPassoutSale
+                                  ? const Color(0xFFEC4899)
+                                  : tagColor),
                           variant: AppPillVariant.solid,
                           padding: const EdgeInsets.symmetric(
                             horizontal: 8,

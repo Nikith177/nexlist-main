@@ -292,8 +292,13 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
               listingType == 'request' || listingType == 'service';
           final hasOwnerStatusAction =
               listingType == 'sell' || listingType == 'rent';
-          final listingBadgeLabel = ListingPriceUtils.resolveBadgeText(data);
-          final listingBadgeColor = ListingPriceUtils.resolveBadgeColor(data);
+          final isPassout = data['is_passout_sale'] == true;
+          final listingBadgeLabel = isPassout
+              ? 'PASSOUT SALE'
+              : ListingPriceUtils.resolveBadgeText(data);
+          final listingBadgeColor = isPassout
+              ? const Color(0xFFEC4899)
+              : ListingPriceUtils.resolveBadgeColor(data);
           final createdAt = ListingDataUtils.resolveCreatedAt(data);
           final imageUrl = (() {
             final resolvedImages = ListingDataUtils.resolveImages(data);

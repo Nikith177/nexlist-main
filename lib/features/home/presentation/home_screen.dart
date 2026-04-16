@@ -298,6 +298,9 @@ class _HomeScreenState extends State<HomeScreen> {
             case 'rent':
               matchesType = type == 'rent';
               break;
+            case 'passout':
+              matchesType = data['is_passout_sale'] == true;
+              break;
             case 'services':
               matchesType = type == 'service';
               break;
@@ -1278,6 +1281,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               });
                             },
                           ),
+                          FilterPill(
+                            text: 'Passout',
+                            isSelected: selectedFilter == 'passout',
+                            onTap: () {
+                              setState(() {
+                                selectedFilter = 'passout';
+                                _recomputeFeedSections();
+                              });
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -1637,6 +1650,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               isFavorite: isSaved,
                               isNegotiable: data['allow_negotiation'] == true,
+                              isPassoutSale: data['is_passout_sale'] == true,
                               heroTag: doc.id,
                               onTap: () => _openHomeItem(context, doc.id, data),
                               onFavoriteTap: () =>
